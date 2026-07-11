@@ -1,0 +1,21 @@
+# Dados (não versionar dados brutos/processados pesados)
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Spark
+metastore_db/
+derby.log
+spark-warehouse/
+
+# OS / editor
+.DS_Store
+.vscode/
