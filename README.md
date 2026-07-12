@@ -1,4 +1,4 @@
-# ifood-offer-optimization
+# Case Técnico - Otimização de Ofertas Ifood
 
 Modelo de recomendação de ofertas com estimativa de impacto incremental de receita - case técnico iFood.
 
@@ -13,8 +13,11 @@ ifood-offer-optimization/
 │   ├── 1_data_processing.ipynb # Limpeza e preparação do dataset unificado (PySpark)
 │   └── 2_modeling.ipynb        # Treino, avaliação e estimativa de impacto do modelo
 ├── presentation/                # Slides para stakeholders de negócio
-├── src/                         # Código fonte reutilizável (funções PySpark de processamento)
-│   └── data_processing.py
+├── src/                         # Código fonte reutilizável
+│   ├── data_processing.py      # Limpeza e unificação dos dados (PySpark)
+│   ├── feature_engineering.py  # Features ponto-no-tempo (contexto do bandit)
+│   ├── bandit.py                # Thompson Sampling contextual (regressão logística bayesiana)
+│   └── replay_evaluator.py     # Replay Method + baselines + simulação
 ├── README.md
 └── requirements.txt
 ```
@@ -44,9 +47,9 @@ Python 3.10 ou 3.11.
 4. Registrar o kernel do venv no Jupyter (para o `jupyter nbconvert`/Jupyter Notebook usarem o
    Python certo, com PySpark instalado):
    ```
-   python -m ipykernel install --user --name ifood-case --display-name "Python (ifood-case)"
+   python -m ipykernel install --user --name ifood-offer-optimization --display-name "Python (ifood-offer-optimization)"
    ```
-5. Rodar `notebooks/1_data_processing.ipynb` (selecionando o kernel "Python (ifood-case)") para
+5. Rodar `notebooks/1_data_processing.ipynb` (selecionando o kernel "Python (ifood-offer-optimization)") para
    gerar o dataset unificado em `data/processed/opportunities/`.
 6. Rodar `notebooks/2_modeling.ipynb` para treinar/avaliar o modelo e gerar as estimativas de
    impacto.
